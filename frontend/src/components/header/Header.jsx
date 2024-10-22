@@ -13,27 +13,17 @@ const Header = () => {
       <Link to="/" className="main-nav-logo">
         <img
           className="main-nav-logo-image"
-          src="./img/argentBankLogo.png"
-          alt="Logo Argent Bank"
+          src="../../assets/argentBankLogo.png"
+          alt="Argent Bank Logo"
         />
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
 
       <div>
-        {user ? (
-          <>
-            <Link to="/profile" className="main-nav-item">
-              <i className="fa fa-user-circle"></i>
-              {user.firstName} {user.lastName}
-            </Link>
-            <SignOutButton />
-          </>
-        ) : (
-          <Link to="/login" className="main-nav-item">
-            <i className="fa fa-user-circle"></i>
-            Sign In
-          </Link>
-        )}
+        <Link className="main-nav-item" to="/sign-in">
+          <i className="fa fa-user-circle"></i>
+          Sign In
+        </Link>
       </div>
     </nav>
   );

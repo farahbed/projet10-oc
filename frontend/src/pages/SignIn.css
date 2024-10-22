@@ -1,0 +1,67 @@
+
+
+.main {
+  background-color: #12002b; /* Dark background */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+.sign-in-icon {
+  font-size: 50px;
+  color: #2c3e50;
+}
+
+.input-wrapper {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.input-wrapper label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.input-wrapper input {
+  width: 85%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-remember {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.input-remember label {
+  margin-left: 0.5rem;
+}
+
+.sign-in-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #00bc77; /* Green button */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sign-in-button:hover {
+  background-color: #00a86b;
+}
+
