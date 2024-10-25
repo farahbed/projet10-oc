@@ -1,52 +1,62 @@
-/* src/components/Header.css */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff; /* Couleur de fond du header */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre pour le header */
+}
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #fff;
-    border-bottom: 1px solid #e2e2e2;
-  }
-  
-  .main-nav-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #2c3e50;
-  }
-  
-  .main-nav-logo-image {
-    height: 30px;
-    margin-right: 0.5rem;
-  }
-  
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
-  
-  .main-nav-item {
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-    color: #2c3e50;
-    text-decoration: none;
-    margin-left: 1rem;
-  }
-  
-  .main-nav-item i {
-    margin-right: 0.5rem;
-    font-size: 1.25rem;
-  }
-  
-  .main-nav-item:hover {
-    color: #42a5f5;
-  }
-  
+.main-nav a {
+  font-weight: bold;
+  color: #2c3e50; /* Couleur du texte */
+  text-decoration: none; /* Supprime le soulignement par défaut */
+  padding: 10px 15px; /* Ajoute un peu de padding pour le confort */
+  transition: color 0.3s, text-decoration 0.3s; /* Transition pour une animation douce */
+}
+
+.main-nav a:hover {
+  color: #42b983; /* Couleur au survol */
+  text-decoration: underline; /* Ajoute un soulignement au survol */
+}
+
+.main-nav-item {
+  display: inline-flex; /* Assure un bon alignement des éléments */
+  align-items: center; /* Aligne l'icône et le texte */
+  color: inherit; /* Utilise la couleur du parent */
+  text-decoration: none; /* Supprime le soulignement */
+  cursor: pointer; /* Change le curseur au survol */
+}
+
+.main-nav-item:hover {
+  color: #42b983; /* Couleur au survol */
+  text-decoration: underline; /* Ajoute un soulignement au survol */
+}
+
+.main-nav-item i {
+  margin-right: 5px; /* Ajoute un espacement entre l'icône et le texte */
+}
+
+.main-nav-logo {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav-logo-image {
+  max-width: 100%;
+  width: 200px; /* Ajuster la largeur de l'image */
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}

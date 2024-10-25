@@ -1,43 +1,61 @@
-// src/pages/Profile.jsx
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserProfile } from '../redux/userSlice';
-import { fetchUserProfile } from '../API/User';
-import AccountList from '../components/account/Account';
-import WelcomeInfo from '../components/welcomeInfo/WelcomeInfo'; // Importer le composant
+import { getUserProfile } from '../redux/userSlice';
+import Welcome from '../components/Welcome';
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.user.token); // Récupérer le token de Redux
-  const userProfile = useSelector((state) => state.user.profile); // Récupérer le profil utilisateur
+  
+  // Récupération des données utilisateur via Redux
+  const { user, loading, error } = useSelector((state) => state.user);
 
-  // Définir le tableau accounts ici
+  // Données statiques pour les comptes
   const accounts = [
     { title: 'Argent Bank Checking (x8349)', amount: '$2,082.79', description: 'Available Balance' },
     { title: 'Argent Bank Savings (x6712)', amount: '$10,928.42', description: 'Available Balance' },
     { title: 'Argent Bank Credit Card (x8349)', amount: '$184.30', description: 'Current Balance' },
   ];
 
+  // Charger les informations de profil utilisateur si elles ne sont pas déjà disponibles
   useEffect(() => {
-    const fetchProfile = async () => {
-      if (token) {
-        try {
-          const profile = await fetchUserProfile(token); // Passer le token à la fonction
-          dispatch(setUserProfile(profile));
-        } catch (error) {
-          console.error('Error fetching user profile:', error);
-        }
-      }
-    };
+    if (!user) {
+      dispatch(getUserProfile());
+    }
+  }, [dispatch, user]);
 
-    fetchProfile();
-  }, [token, dispatch]);
+  // Gestion du chargement
+  if (loading) {
+    return <p>Loading user data...</p>;
+  }
+
+  // Gestion des erreurs
+  if (error) {
+    return <p style={{ color: 'red' }}>{error}</p>;
+  }
 
   return (
-    <main className="main bg-dark">
-      <WelcomeInfo userProfile={userProfile} /> {/* Utiliser le composant ici */}
-      <AccountList accounts={accounts} /> {/* Passer le tableau accounts au composant */}
-    </main>
+    <div>
+      <main className="main bg-dark">
+        <Welcome firstName={user?.firstName || ''} lastName={user?.lastName || ''} />
+        <h2 className="sr-only">Accounts</h2>
+        {accounts && accounts.length > 0 ? (
+          accounts.map((account, index) => (
+            <section className="account" key={index}>
+              <div className="account-content-wrapper">
+                <h3 className="account-title">{account.title}</h3>
+                <p className="account-amount">{account.amount}</p>
+                <p className="account-amount-description">{account.description}</p>
+              </div>
+              <div>
+                <button className="transaction-button">View transactions</button>
+              </div>
+            </section>
+          ))
+        ) : (
+          <p>No accounts found.</p>
+        )}
+      </main>
+    </div>
   );
 };
 

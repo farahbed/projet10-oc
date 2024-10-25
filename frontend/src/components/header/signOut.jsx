@@ -1,16 +1,15 @@
+// src/components/SignOutButton.js
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { clearUser } from '../redux/userSlice';
 
 const SignOutButton = () => {
-  const dispatch = useDispatch();
-
   const handleSignOut = () => {
-    dispatch(clearUser()); // Efface les données utilisateur et le token
+    localStorage.removeItem('token'); // Supprimer le token
+    window.location.href = '/login'; // Rediriger vers la page de connexion
   };
 
   return (
-    <button className="sign-out-button" onClick={handleSignOut}>
+    <button className="main-nav-item" onClick={handleSignOut}>
+      <i className="fa fa-sign-out"></i> {/* Icône de déconnexion */}
       Sign Out
     </button>
   );
