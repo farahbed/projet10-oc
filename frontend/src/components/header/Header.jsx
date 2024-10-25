@@ -11,7 +11,7 @@ const Header = () => {
       <Link className="main-nav-logo" to="/">
         <img
           className="main-nav-logo-image"
-          src="/assets/argentBankLogo.png" // Chemin absolu à partir de public
+          src="../../assets/argentBankLogo.png" // Chemin absolu à partir de public
           alt="Argent Bank Logo"
         />
         <h1 className="sr-only">Argent Bank</h1>

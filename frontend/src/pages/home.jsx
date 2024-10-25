@@ -1,7 +1,7 @@
 // src/pages/Home.jsx
 import React from 'react';
-import Banner from '.././components/banner/Banner';
-import Features from '.././components/features/Features';
+import Banner from '.././components/banner/banner';
+import Features from '.././components/features/features';
 
 const Home = () => {
   return (

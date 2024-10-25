@@ -1,23 +1,20 @@
-/* src/components/Banner.css */
-
 .hero {
-    background-image: url('../img/bank-tree.jpeg'); /* Chemin vers ton image */
-    background-position: center;
+    background-image: url('../assets/bank-tree.jpeg');
+    background-position: 0 -50px;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 300px; /* Ajuste la hauteur selon tes besoins */
-    display: flex;
-    justify-content: center; /* Centre le contenu horizontalement */
-    align-items: center; /* Centre le contenu verticalement */
+    height: 300px;
     position: relative;
   }
   
   .hero-content {
     position: relative;
-    width: 200px; /* Ajuste la largeur selon tes besoins */
-    background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent pour le texte */
+    top: 2rem;
+    width: 200px;
+    background: white;
     padding: 2rem;
-    text-align: center;
+    text-align: left;
+    margin: 0 auto;
   }
   
   .hero-content .subtitle {
@@ -33,11 +30,23 @@
   
   @media (min-width: 920px) {
     .hero {
-      height: 400px; /* Ajuste pour les écrans plus larges */
+      height: 400px;
+      background-position: 0% 33%;
     }
   
     .hero-content {
-      width: 300px; /* Ajuste pour les écrans plus larges */
+      position: absolute;
+      top: 50px;
+      right: 50px;
+      width: 300px;
+      margin: 2rem;
+    }
+  
+    .hero-content .subtitle {
+      font-size: 1.5rem;
+    }
+  
+    .hero-content .text {
+      font-size: 1.2rem;
     }
   }
-  
