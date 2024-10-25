@@ -1,12 +1,16 @@
+// src/pages/Home.jsx
 import React from 'react';
+import Banner from '.././components/banner/Banner';
+import Features from '.././components/features/Features';
 
-function Home() {
+const Home = () => {
   return (
     <div>
-      <h1>Welcome to the Home Page</h1>
-      {/* Ajoute ici ton contenu */}
+      <Banner />
+      <Features />
     </div>
   );
-}
+};
 
 export default Home;
+

@@ -1,11 +1,11 @@
+// src/API/Auth.jsx
+
 const API_URL = 'http://localhost:3001/api/v1';
 
-// Fonction pour se connecter
-
+// Fonction de connexion
 const userLogin = async ({ email, password }) => {
   try {
-    console.log('Attempting login with:', { email, password });
-    const response = await fetch(${API_URL}/user/login, {
+    const response = await fetch(`${API_URL}/user/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -13,23 +13,39 @@ const userLogin = async ({ email, password }) => {
       body: JSON.stringify({ email, password }),
     });
 
-    const data = await response.json();
-    console.log('Login response:', data);
-
-    if (response.ok) { 
-      const token = data.body.token; // Vérifiez la bonne structure ici
-      localStorage.setItem('token', token);
-      return data; // Retournez l'objet entier
-    } else {
-      console.log('Login failed:', data.message);
-      throw new Error(data.message);
+    if (!response.ok) {
+      throw new Error('Erreur lors de la connexion.');
     }
+
+    const data = await response.json();
+    return { token: data.token, user: data.user }; // Retournez le token et l'utilisateur
   } catch (error) {
     console.error('Error during login:', error);
-    throw new Error('Une erreur est survenue lors de la connexion.'); // Lancer une erreur personnalisée
+    throw new Error(error.message || 'Une erreur est survenue lors de la connexion.');
   }
 };
 
+// Fonction pour récupérer le profil utilisateur
+export const getUserProfile = async () => {
+  try {
+    const response = await fetch(`${API_URL}/user/profile`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`, // Utilisez le token
+        'Content-Type': 'application/json',
+      },
+    });
 
-export default userLogin;
+    if (!response.ok) {
+      throw new Error('Erreur lors de la récupération du profil utilisateur.');
+    }
 
+    const data = await response.json();
+    return data.user; // Retournez uniquement l'utilisateur
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+    throw new Error(error.message || 'Une erreur est survenue lors de la récupération du profil utilisateur.');
+  }
+};
+
+export default userLogin; // Assurez-vous d'exporter la fonction userLogin

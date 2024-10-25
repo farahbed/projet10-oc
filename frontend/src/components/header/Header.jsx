@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SignOutButton from './SignOutButton'; // Assurez-vous que le nom du fichier est correct
+import SignOutButton from './signOut';
 import './Header.css'; // Assurez-vous d'importer le fichier CSS
 
 const Header = () => {

@@ -1,0 +1,43 @@
+/* src/components/Banner.css */
+
+.hero {
+    background-image: url('../img/bank-tree.jpeg'); /* Chemin vers ton image */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px; /* Ajuste la hauteur selon tes besoins */
+    display: flex;
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement */
+    position: relative;
+  }
+  
+  .hero-content {
+    position: relative;
+    width: 200px; /* Ajuste la largeur selon tes besoins */
+    background: rgba(255, 255, 255, 0.8); /* Fond semi-transparent pour le texte */
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .hero-content .subtitle {
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .hero-content .text {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+  }
+  
+  @media (min-width: 920px) {
+    .hero {
+      height: 400px; /* Ajuste pour les écrans plus larges */
+    }
+  
+    .hero-content {
+      width: 300px; /* Ajuste pour les écrans plus larges */
+    }
+  }
+  

@@ -1,12 +1,14 @@
+// src/pages/Login.jsx
+
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setUserProfile } from '../redux/userSlice';
-import userLogin from '../redux/auth'; // Importation correcte
-import './Login.css';
+import { setToken, setUserProfile } from '../redux/userSlice';
+import userLogin from '../API/Auth'; // Assurez-vous que cette fonction est correcte
+import './login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState(''); // Changement de username à email
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState('');
@@ -16,12 +18,13 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await userLogin({ email, password }); // Appel à userLogin
-      dispatch(setUserProfile(response.body.user)); // Mettez à jour l'état utilisateur avec les données du profil
-      navigate('/profile'); // Redirection vers le profil
+      const response = await userLogin({ email, password });
+      dispatch(setToken(response.token)); // Mettez à jour le token
+      dispatch(setUserProfile(response.user)); // Mettez à jour le profil utilisateur
+      navigate('/profile');
     } catch (error) {
       console.error('Login failed:', error);
-      setError(error.message || 'Une erreur est survenue lors de la connexion.'); // Affichez l'erreur
+      setError(error.message || 'Erreur de connexion.');
     }
   };
 
@@ -33,9 +36,9 @@ const Login = () => {
           <div className="input-wrapper">
             <label>Email:</label>
             <input
-              type="email" // Changement de type à email
+              type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)} // Mettez à jour l'état avec l'email
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -59,7 +62,7 @@ const Login = () => {
           </div>
           <button className='sign-in-button' type="submit">Sign In</button>
         </form>
-        {error && <p style={{ color: 'red' }}>{error}</p>} {/* Affichez l'erreur */}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>
     </div>
   );

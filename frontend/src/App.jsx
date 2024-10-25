@@ -1,11 +1,11 @@
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Footer from './components/Footer';
-import Header from './components/Header';
+import Footer from './components/footer/Footer';
+import Header from './components/header/Header';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Profil from './pages/Profil';
+import Profil from './pages/Profile';
 import Transaction from './pages/Transaction';
 
 function App() {
