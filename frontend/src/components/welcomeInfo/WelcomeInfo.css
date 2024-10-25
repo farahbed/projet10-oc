@@ -1,14 +1,18 @@
-.welcome {
-    text-align: center; /* Centrer le texte dans l'en-tête */
-    color: white; /* Couleur du texte */
-    margin-bottom: 2rem; /* Espacement en bas */
-}
-.welcome button {
-    background-color: #00bc77; /* Couleur de fond du bouton */
-    color: white; /* Couleur du texte du bouton */
-    padding: 0.5rem 1rem; /* Espacement interne du bouton */
-    border-radius: 0.25rem; /* Arrondir les coins du bouton */
-    border: none; /* Supprimer la bordure */
-    cursor: pointer; /* Changer le curseur au survol */
-}
+/* src/components/WelcomeInfo.css */
 
+.welcome-info {
+    text-align: center;
+    margin: 2rem 0;
+  }
+  
+  .welcome-message {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .welcome-description {
+    font-size: 1.125rem;
+    color: #666;
+  }
+  
