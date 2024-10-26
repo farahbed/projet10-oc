@@ -1,0 +1,47 @@
+.account {
+  display: flex;
+  justify-content: center; /* Centrer les éléments en colonne */
+  align-items: flex-start; /* Alignement en haut */
+  border: 1px solid black;
+  background-color: #fff; /* Fond blanc */
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: column; /* Assurer que les éléments sont en colonne */
+  padding: 1.5rem;
+  box-sizing: border-box;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.account-title,
+.account-amount,
+.account-amount-description {
+  color: black; /* Texte en noir */
+}
+
+.account-amount {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.account-amount-description {
+  margin: 0;
+}
+
+.transaction-button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border: none; /* Enlever les bordures par défaut */
+  background-color: #00bc77; /* Couleur verte */
+  color: #fff;
+  cursor: pointer; /* Changer le curseur au survol */
+}
+
+.transaction-button:hover {
+  background-color: #009c60; /* Changer légèrement la couleur au survol */
+}

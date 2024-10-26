@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Profil from './pages/Profile';
 import Transaction from './pages/Transaction';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profil" element={<Profil />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/transaction" element={<Transaction />} />
         </Routes>

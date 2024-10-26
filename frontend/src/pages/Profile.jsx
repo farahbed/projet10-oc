@@ -1,14 +1,11 @@
-// src/pages/Profile.jsx
-
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getUserProfile } from '../redux/userSlice';
-import Welcome from '../components/welcomeInfo/WelcomeInfo';
-
+// src/components/Profile.js
+import React, { useEffect, useState } from 'react';
+import { Welcome } from '../components/welcomeInfo/WelcomeInfo';
+import { getUserProfile } from '../API/User';
 
 const Profile = () => {
-  const dispatch = useDispatch();
-  const { userProfile, loading, error } = useSelector((state) => state.user);
+  const [user, setUser] = useState(null); // État pour stocker les informations de l'utilisateur
+  const [error, setError] = useState(''); // État pour gérer les erreurs
 
   const accounts = [
     { title: 'Argent Bank Checking (x8349)', amount: '$2,082.79', description: 'Available Balance' },
@@ -17,23 +14,28 @@ const Profile = () => {
   ];
 
   useEffect(() => {
-    if (!userProfile) {
-      dispatch(getUserProfile());
-    }
-  }, [dispatch, userProfile]);
+    const fetchUserProfile = async () => {
+      const token = localStorage.getItem('token'); // Récupérer le token depuis le localStorage
+      console.log('token', token)
 
-  if (loading) {
-    return <p>Loading user data...</p>;
-  }
+      if (token) {
+        try {
+          const userData = await getUserProfile(token); // Appel à l'API pour récupérer le profil utilisateur
+          setUser(userData); // Mettre à jour l'état avec les données utilisateur
+        } catch (error) {
+          setError(error.message); // Gérer l'erreur en cas d'échec
+        }
+      }
+    };
 
-  if (error) {
-    return <p style={{ color: 'red' }}>{error}</p>;
-  }
+    fetchUserProfile();
+  }, []); // Le tableau vide signifie que l'effet ne s'exécute qu'une seule fois après le premier rendu
 
   return (
     <div>
       <main className="main bg-dark">
-        <Welcome firstName={userProfile?.firstName || ''} lastName={userProfile?.lastName || ''} />
+        <Welcome />
+        {error && <p style={{ color: 'red' }}>{error}</p>} {/* Afficher l'erreur si elle existe */}
         <h2 className="sr-only">Accounts</h2>
         {accounts.map((account, index) => (
           <section className="account" key={index}>
@@ -52,4 +54,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Profile

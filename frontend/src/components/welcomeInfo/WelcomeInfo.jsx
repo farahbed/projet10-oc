@@ -1,15 +1,20 @@
-// src/components/WelcomeInfo.jsx
-
+// src/components/welcomeInfo/WelcomeInfo.js
 import React from 'react';
-import './WelcomeInfo.css';
+import { useSelector } from "react-redux";
+import "./WelcomeInfo.css";
 
-const WelcomeInfo = ({ firstName, lastName }) => (
-  <div className="welcome-info">
-    <h1 className="welcome-message">Bienvenue, {firstName} {lastName} !</h1>
-    <p className="welcome-description">Voici un résumé de vos informations bancaires.</p>
-  </div>
-);
+export const Welcome = () => {
+  const userDetails = useSelector((state) => state.user.user);
 
-export default WelcomeInfo;
+  const firstName = userDetails ? userDetails.firstName : '';
+  const lastName = userDetails ? userDetails.lastName : '';
 
+  return (
+    <div className="welcome">
+      <p>
+        Welcome back{(firstName || lastName) ? `, ${firstName} ${lastName}` : ''}!
+      </p>
+    </div>
+  );
+};
 

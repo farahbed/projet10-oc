@@ -1,6 +1,6 @@
 // src/components/AccountList.jsx
 import React from 'react';
-import './AccountList.css'; // Importez le CSS si nécessaire
+import './Account.css'; // Importez le CSS si nécessaire
 
 const AccountList = ({ accounts }) => {
   return (
@@ -14,7 +14,7 @@ const AccountList = ({ accounts }) => {
             <p className="account-amount-description">{account.description}</p>
           </div>
           <div>
-            <button className="transaction-button">View transactions</button> 
+            <button className="transaction-button">View transactions</button>
           </div>
         </section>
       ))}

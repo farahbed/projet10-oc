@@ -1,18 +1,26 @@
-// src/API/userAPI.js
-const fetchUserProfile = async (token) => {
-    const response = await fetch('http://localhost:3001/api/v1/user/profile', {
+// src/services/user.js
+const API_URL = 'http://localhost:3001/api/v1';
+
+// Fonction pour récupérer le profil utilisateur
+export const getUserProfile = async (token) => {
+  try {
+    const response = await fetch(`${API_URL}/user/profile`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${token}`, // Ajouter le token à l'en-tête
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`, // Utilisation de backticks pour l'interpolation
       },
     });
-  
+
     if (!response.ok) {
-      throw new Error('Failed to fetch profile');
+      const errorDetails = await response.json();
+      throw new Error(`Failed to fetch user profile: ${errorDetails.message || response.statusText}`); // Utilisation de backticks
     }
-  
-    return await response.json();
-  };
-  
-  export { fetchUserProfile };
-  
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('API Error:', error);
+    throw error;
+  }
+};

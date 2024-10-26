@@ -1,56 +1,25 @@
 // src/redux/userSlice.js
-
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getUserProfile as fetchUserProfile } from '../API/Auth'; // Importation de la fonction API
-
-// Thunk asynchrone pour récupérer les informations du profil utilisateur
-export const getUserProfile = createAsyncThunk(
-  'user/getUserProfile',
-  async (_, { rejectWithValue }) => {
-    try {
-      const userProfile = await fetchUserProfile(); // Appel de la fonction pour récupérer le profil
-      return userProfile; // Retourne directement le profil de l'utilisateur
-    } catch (error) {
-      return rejectWithValue(error.message || 'Erreur de récupération du profil');
-    }
-  }
-);
+import { createSlice } from '@reduxjs/toolkit';
 
 const userSlice = createSlice({
   name: 'user',
   initialState: {
     token: null,
-    userProfile: null,
-    loading: false,
-    error: null,
+    profile: null,
   },
   reducers: {
     setToken(state, action) {
       state.token = action.payload;
     },
-    clearToken(state) {
+    setUserProfile(state, action) { // Assurez-vous que cette fonction est définie
+      state.profile = action.payload;
+    },
+    signOutUser(state) {
       state.token = null;
+      state.profile = null;
     },
-    setUserProfile(state, action) {
-      state.userProfile = action.payload;
-    },
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(getUserProfile.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(getUserProfile.fulfilled, (state, action) => {
-        state.userProfile = action.payload; // Assigne le profil utilisateur récupéré
-        state.loading = false;
-      })
-      .addCase(getUserProfile.rejected, (state, action) => {
-        state.error = action.payload; // Gère l'erreur si l'appel échoue
-        state.loading = false;
-      });
   },
 });
 
-export const { setToken, clearToken, setUserProfile } = userSlice.actions;
+export const { setToken, setUserProfile, signOutUser } = userSlice.actions; // Vérifiez que setUserProfile est exporté
 export default userSlice.reducer;

@@ -18,13 +18,17 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await userLogin({ email, password });
-      dispatch(setToken(response.token)); // Mettez à jour le token
-      dispatch(setUserProfile(response.user)); // Mettez à jour le profil utilisateur
-      navigate('/profile');
+      const response = await loginUser({ email, password });
+  
+      if (response) {
+        dispatch(setUserProfile(response.user)); // Remplace `response.user` par les données utilisateur réelles
+        dispatch(setToken(response.token)); // Appel de la nouvelle action setToken
+  
+        navigate('/profile');
+      }
     } catch (error) {
       console.error('Login failed:', error);
-      setError(error.message || 'Erreur de connexion.');
+      setError(error.message);
     }
   };
 
