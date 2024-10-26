@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { Welcome } from '../components/welcomeInfo/WelcomeInfo';
 import { getUserProfile } from '../API/User';
+import '../components/account/Account.css';
+import AccountList from '../components/account/Account';
 
 const Profile = () => {
   const [user, setUser] = useState(null); // État pour stocker les informations de l'utilisateur
@@ -35,20 +37,7 @@ const Profile = () => {
     <div>
       <main className="main bg-dark">
         <Welcome />
-        {error && <p style={{ color: 'red' }}>{error}</p>} {/* Afficher l'erreur si elle existe */}
-        <h2 className="sr-only">Accounts</h2>
-        {accounts.map((account, index) => (
-          <section className="account" key={index}>
-            <div className="account-content-wrapper">
-              <h3 className="account-title">{account.title}</h3>
-              <p className="account-amount">{account.amount}</p>
-              <p className="account-amount-description">{account.description}</p>
-            </div>
-            <div>
-              <button className="transaction-button">View transactions</button>
-            </div>
-          </section>
-        ))}
+        <AccountList accounts={accounts} />
       </main>
     </div>
   );
