@@ -4,10 +4,11 @@ import { useSelector } from "react-redux";
 import "./WelcomeInfo.css";
 
 export const Welcome = () => {
-  const userDetails = useSelector((state) => state.user.user);
+  const userProfile = useSelector((state) => state.user.profile);
+  console.log("userProfile dans Welcome", userProfile);
 
-  const firstName = userDetails ? userDetails.firstName : '';
-  const lastName = userDetails ? userDetails.lastName : '';
+  const firstName = userProfile ? userProfile.firstName : '';
+  const lastName = userProfile ? userProfile.lastName : '';
 
   return (
     <div className="welcome">

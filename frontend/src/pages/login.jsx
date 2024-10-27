@@ -43,6 +43,7 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              autoComplete='username'
             />
           </div>
           <div className="input-wrapper">

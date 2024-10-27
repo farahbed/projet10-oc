@@ -18,6 +18,8 @@ export const getUserProfile = async (token) => {
     }
 
     const data = await response.json();
+
+    console.log('Données du profil utilisateur recupérées:', data);
     return data;
   } catch (error) {
     console.error('API Error:', error);
