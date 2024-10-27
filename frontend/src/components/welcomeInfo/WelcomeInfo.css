@@ -1,12 +1,8 @@
 /* WelcomeInfo.css */
 
 .welcome {
-    background-color: #12002b;
-    color: #fff;
-    text-align: center;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 5px;
+  color: #fff;
+  margin-bottom: 2rem;
   }
   
   .welcome p {

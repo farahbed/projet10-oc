@@ -5,17 +5,7 @@ body {
     font-family: 'Arial', sans-serif;
   }
   
-  .main-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #fff;
-  }
-  
-  .main-nav-logo-image {
-    width: 200px;
-  }
+ 
   
   .main {
     background-color: #12002b; /* Dark background */

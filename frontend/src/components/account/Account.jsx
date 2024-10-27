@@ -13,9 +13,7 @@ const AccountList = ({ accounts }) => {
             <p className="account-amount">{account.amount}</p>
             <p className="account-amount-description">{account.description}</p>
           </div>
-          <div>
             <button className="transaction-button">View transactions</button>
-          </div>
         </section>
       ))}
     </>

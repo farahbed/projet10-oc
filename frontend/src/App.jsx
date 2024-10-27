@@ -5,9 +5,9 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Profil from './pages/Profile';
-import Transaction from './pages/Transaction';
 import Profile from './pages/Profile';
+import Transaction from './pages/Transaction';
+
 
 function App() {
   return (
