@@ -18,12 +18,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginUser({ email, password });
+      const response = await userLogin({ email, password });
   
       if (response) {
         dispatch(setUserProfile(response.user)); // Remplace `response.user` par les données utilisateur réelles
         dispatch(setToken(response.token)); // Appel de la nouvelle action setToken
-  
         navigate('/profile');
       }
     } catch (error) {
@@ -53,6 +52,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoComplete='current-password'
             />
           </div>
           <div className="input-remember">

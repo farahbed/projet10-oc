@@ -1,0 +1,21 @@
+.sign-out-button {
+    display: inline-flex;
+    align-items: center;
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: #2c3e50;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: color 0.3s, text-decoration 0.3s;
+  }
+  
+  .sign-out-button .icon {
+    margin-right: 5px; /* Espacement entre l'icône et le texte */
+  }
+  
+  .sign-out-button:hover {
+    color: #42b983;
+    text-decoration: underline;
+  }
+  
