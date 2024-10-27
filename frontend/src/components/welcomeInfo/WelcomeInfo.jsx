@@ -15,6 +15,10 @@ export const Welcome = () => {
       <p>
         Welcome back{(firstName || lastName) ? `, ${firstName} ${lastName}` : ''}!
       </p>
+      {/* Bouton Edit Name ajouté */}
+      <button onClick={() => alert("Edit Name button clicked")}>
+        Edit Name
+      </button>
     </div>
   );
 };
