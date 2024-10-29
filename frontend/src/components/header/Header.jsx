@@ -1,16 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { signOutUser } from '../../redux/userSlice'; // Corrigez l'importation ici
 import './Header.css';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.user.token); // Récupérez le token depuis le store
-  const userName = useSelector((state) => state.user.userName); // Récupérez le nom d'utilisateur depuis le store
+  const navigate = useNavigate();
+  const token = useSelector((state) => state.user.token);
+  const userProfile = useSelector((state) => state.user.profile);
 
   const handleSignOut = () => {
-    localStorage.removeItem('token'); // Supprime le token pour déconnecter
-    dispatch({ type: 'user/signOut' }); // Remplacez par l'action appropriée pour réinitialiser l'état de l'utilisateur
+    localStorage.removeItem('token');
+    dispatch(signOutUser());
+    navigate('/login'); // Redirige vers la page de connexion
   };
 
   return (
@@ -18,7 +21,7 @@ const Header = () => {
       <Link className="main-nav-logo" to="/">
         <img
           className="main-nav-logo-image"
-          src="../../assets/argentBankLogo.png" // Chemin absolu à partir de public
+          src="/assets/argentBankLogo.png"
           alt="Argent Bank Logo"
         />
         <h1 className="sr-only">Argent Bank</h1>
@@ -27,8 +30,8 @@ const Header = () => {
         {token ? (
           <>
             <span className="main-nav-item">
-              <i className="fa fa-user-circle"></i> {/* Icône utilisateur */}
-              {userName || 'User'} {/* Affiche le nom d'utilisateur ou "User" par défaut */}
+              <i className="fa fa-user-circle"></i>
+              {userProfile?.firstName} {/* Affiche uniquement le prénom */}
             </span>
             <button className="main-nav-item sign-out-button" onClick={handleSignOut}>
               <i className="fa-solid fa-right-from-bracket"></i>
@@ -47,3 +50,4 @@ const Header = () => {
 };
 
 export default Header;
+

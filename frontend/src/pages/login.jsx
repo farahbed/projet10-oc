@@ -1,9 +1,7 @@
-// src/pages/Login.jsx
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setToken, setUserProfile } from '../redux/userSlice';
-import userLogin from '../API/Auth'; // Assurez-vous que cette fonction est correcte
+import { loginUser } from '../redux/userThunks';
 import '../styles/login.css';
 
 const Login = () => {
@@ -17,16 +15,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await userLogin({ email, password });
-  
-      if (response) {
-        dispatch(setUserProfile(response.user)); // Remplace `response.user` par les données utilisateur réelles
-        dispatch(setToken(response.token)); // Appel de la nouvelle action setToken
-        navigate('/profile');
-      }
+      await dispatch(loginUser({ email, password })).unwrap();
+      navigate('/profile');
     } catch (error) {
       console.error('Login failed:', error);
-      setError(error.message);
+      setError(error);
     }
   };
 
@@ -74,3 +67,4 @@ const Login = () => {
 };
 
 export default Login;
+
