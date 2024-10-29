@@ -16,7 +16,11 @@
 
 .main-nav-item {
   text-decoration: none;
-  margin-right: 0.5rem;
+  margin-right: 1rem; /* Augmentation de l'espace entre les éléments */
+}
+
+.main-nav-item:last-child {
+  margin-right: 0; /* Supprime la marge du dernier élément */
 }
 
 .main-nav-item:hover {
@@ -31,4 +35,15 @@
 .main-nav-logo-image {
   max-width: 100%;
   width: 200px;
+}
+
+.sign-out-button {
+  background-color: transparent; /* Arrière-plan transparent */
+  border: none; /* Pas de bordure */
+  color: #2c3e50; /* Couleur de texte */
+  cursor: pointer; /* Curseur pour indiquer que c'est cliquable */
+}
+
+.sign-out-button:hover {
+  text-decoration: underline; /* Soulignement au survol */
 }
