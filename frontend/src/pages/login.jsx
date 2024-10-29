@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setToken, setUserProfile } from '../redux/userSlice';
 import userLogin from '../API/Auth'; // Assurez-vous que cette fonction est correcte
-import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -31,12 +30,13 @@ const Login = () => {
   };
 
   return (
-    <div className="main">
+    <main className="main bg-dark">
       <div className="sign-in-content">
-        <h2 className="sign-in-icon">Sign In</h2>
-        <form className='signInContent' onSubmit={handleSubmit}>
+        <i className="fa fa-user-circle sign-in-icon"></i>
+        <h1>Sign In</h1>
+        <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label>Email:</label>
+            <label>Username</label>
             <input
               type="email"
               value={email}
@@ -46,7 +46,7 @@ const Login = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label>Password:</label>
+            <label>Password</label>
             <input
               type="password"
               value={password}
@@ -68,7 +68,7 @@ const Login = () => {
         </form>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'; // Importez useSelector
 import SignOut from './signOut';
 import './Header.css';
+import './signOut.css';
 
 const Header = () => {
   const token = useSelector((state) => state.user.token); // Récupérez le token depuis le store

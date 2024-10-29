@@ -10,7 +10,7 @@
     transition: color 0.3s, text-decoration 0.3s;
   }
   
-  .sign-out-button .icon {
+  .sign-out-button i {
     margin-right: 5px; /* Espacement entre l'icône et le texte */
   }
   

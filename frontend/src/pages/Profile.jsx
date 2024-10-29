@@ -1,14 +1,11 @@
-// src/components/Profile.js
 import React, { useEffect, useState } from 'react';
-import { Welcome } from '../components/welcomeInfo/WelcomeInfo';
-import { getUserProfile } from '../API/User';
 import { useDispatch } from 'react-redux';
 import { setUserProfile } from '../redux/userSlice';
-import '../components/account/Account.css';
+import { getUserProfile } from '../API/User';
 import AccountList from '../components/account/Account';
 
 const Profile = () => {
-  const [error, setError] = useState(''); // État pour gérer les erreurs
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
 
   const accounts = [
@@ -19,32 +16,28 @@ const Profile = () => {
 
   useEffect(() => {
     const fetchUserProfile = async () => {
-      const token = localStorage.getItem('token'); // Récupérer le token depuis le localStorage
-      console.log('token', token)
+      const token = localStorage.getItem('token');
+      console.log('token', token);
 
       if (token) {
         try {
-          const userData = await getUserProfile(token); // Appel à l'API pour récupérer le profil utilisateur
+          const userData = await getUserProfile(token);
           console.log('Données utilisateur à stocker dans Redux:', userData);
           dispatch(setUserProfile(userData.body));
-
         } catch (error) {
-          setError(error.message); // Gérer l'erreur en cas d'échec
+          setError(error.message);
         }
       }
     };
 
     fetchUserProfile();
-  }, [dispatch]); // Le tableau vide signifie que l'effet ne s'exécute qu'une seule fois après le premier rendu
+  }, [dispatch]);
 
   return (
-    <div>
-      <main className="main bg-dark">
-        <Welcome />
+    <main className="main bg-dark">
         <AccountList accounts={accounts} />
-      </main>
-    </div>
+    </main>
   );
 };
 
-export default Profile
+export default Profile;

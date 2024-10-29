@@ -3,8 +3,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
-
-
 }
 
 .main-nav a {
@@ -12,26 +10,17 @@
   color: #2c3e50;
 }
 
-.main-nav a:hover {
-  color: #42b983; /* Couleur au survol */
-  text-decoration: underline; /* Ajoute un soulignement au survol */
+.main-nav a.router-link-exact-active {
+  color: #42b983;
 }
 
 .main-nav-item {
-  display: inline-flex; /* Assure un bon alignement des éléments */
-  align-items: center; /* Aligne l'icône et le texte */
-  color: inherit; /* Utilise la couleur du parent */
-  text-decoration: none; /* Supprime le soulignement */
-  cursor: pointer; /* Change le curseur au survol */
+  text-decoration: none;
+  margin-right: 0.5rem;
 }
 
 .main-nav-item:hover {
-  color: #42b983; /* Couleur au survol */
-  text-decoration: underline; /* Ajoute un soulignement au survol */
-}
-
-.main-nav-item i {
-  margin-right: 5px; /* Ajoute un espacement entre l'icône et le texte */
+  text-decoration: underline;
 }
 
 .main-nav-logo {
@@ -41,19 +30,5 @@
 
 .main-nav-logo-image {
   max-width: 100%;
-  width: 200px; /* Ajuster la largeur de l'image */
-}
-
-.sr-only {
-  border: 0 !important;
-  clip: rect(1px, 1px, 1px, 1px) !important;
-  -webkit-clip-path: inset(50%) !important;
-  clip-path: inset(50%) !important;
-  height: 1px !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  width: 1px !important;
-  white-space: nowrap !important;
+  width: 200px;
 }
