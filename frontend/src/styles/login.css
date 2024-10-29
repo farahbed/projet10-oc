@@ -13,6 +13,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 300px;
+    color: #000;
   }
   
   .sign-in-icon {
@@ -28,10 +29,12 @@
   }
   
   .input-wrapper label {
+    color: #000; /* Assurez-vous que le texte est noir ou d'une couleur visible */
     display: block;
     font-weight: bold;
     margin-bottom: 0.5rem;
-  }
+}
+
   
   .input-wrapper input {
     padding: 5px;
@@ -47,6 +50,7 @@
   }
   
   .input-remember label {
+    color: #000;
     margin-left: 0.5rem;
   }
   

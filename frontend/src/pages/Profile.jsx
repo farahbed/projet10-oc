@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setUserProfile } from '../redux/userSlice';
 import { getUserProfile } from '../API/User';
 import AccountList from '../components/account/Account';
+import '../styles/profile.css';
 
 const Profile = () => {
   const [error, setError] = useState('');
