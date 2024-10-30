@@ -1,0 +1,56 @@
+/* Style général du formulaire */
+.edit-profile-form {
+    padding: 20px; /* Espacement intérieur */
+    border-radius: 8px; /* Bords arrondis */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre pour le relief */
+    max-width: 400px; /* Largeur maximale */
+    margin: auto; /* Centrage horizontal */
+  }
+  
+  .form-group {
+    display: flex;
+  }
+  /* Style des labels */
+  .edit-profile-form label {
+      flex: none;
+    margin-bottom: 8px; /* Espacement en bas */
+    font-weight: bold; /* Gras */
+  }
+  
+  /* Style des champs de saisie */
+  .edit-profile-form input {
+    width: 100%; /* Prend toute la largeur disponible */
+    padding: 10px; /* Espacement intérieur */
+    margin-bottom: 15px; /* Espacement entre les champs */
+    border: 1px solid #ced4da; /* Bordure grise */
+    border-radius: 4px; /* Bords arrondis */
+  }
+  
+  /* Style des boutons */
+  .edit-profile-form button {
+    background-color: #28a745; /* Fond vert pour le bouton de sauvegarde */
+    color: white; /* Texte blanc */
+    border: none; /* Pas de bordure */
+    padding: 10px 15px; /* Espacement intérieur */
+    cursor: pointer; /* Curseur de souris pointer */
+    border-radius: 5px; /* Bords arrondis */
+    margin-right: 10px; /* Espacement entre les boutons */
+  }
+  
+/* Style des boutons */
+.edit-profile-form button {
+    background-color: #28a745; /* Fond vert pour les deux boutons */
+    color: white; /* Texte blanc */
+    border: none; /* Pas de bordure */
+    padding: 10px 0; /* Espacement intérieur */
+    cursor: pointer; /* Curseur de souris pointer */
+    border-radius: 5px; /* Bords arrondis */
+    width: 48%; /* Prend 48% de la largeur pour laisser un peu d'espace */
+    margin: 1%; /* Marge pour espacer les boutons */
+    display: inline-block; /* Afficher les boutons côte à côte */
+  }
+  
+  .edit-profile-form button:hover {
+    background-color: #218838; /* Couleur au survol pour les deux boutons */
+  }
+  

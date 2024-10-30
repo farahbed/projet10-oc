@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setToken, setUserProfile } from './userSlice';
-import { loginUserApi, fetchUserProfileApi } from './userApi';
+import { loginUserApi, fetchUserProfileApi, updateUserProfileApi } from './userApi';
 
 export const loginUser = createAsyncThunk(
   'user/loginUser',
@@ -36,3 +36,16 @@ export const fetchUserProfile = createAsyncThunk(
     }
   );
   
+  export const updateUserProfile = createAsyncThunk(
+    'user/updateUserProfile',
+    async (profileData, { getState, dispatch, rejectWithValue }) => {
+      const { token } = getState().user;
+      try {
+        const updatedProfile = await updateUserProfileApi(token, profileData);
+        dispatch(setUserProfile(updatedProfile));
+        return updatedProfile;
+      } catch (error) {
+        return rejectWithValue(error.message);
+      }
+    }
+  );
