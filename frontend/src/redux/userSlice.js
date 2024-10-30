@@ -1,3 +1,5 @@
+// redux/userSlice.js
+
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -16,7 +18,7 @@ const userSlice = createSlice({
       localStorage.setItem('token', action.payload);
     },
     setUserProfile(state, action) {
-      state.profile = action.payload;
+      state.profile = action.payload; // This updates the user profile
     },
     signOutUser(state) {
       state.token = null;

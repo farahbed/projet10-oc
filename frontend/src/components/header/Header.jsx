@@ -13,7 +13,7 @@ const Header = () => {
   const handleSignOut = () => {
     localStorage.removeItem('token');
     dispatch(signOutUser());
-    navigate('/login'); // Redirige vers la page de connexion
+    navigate('/login'); // Redirect to login
   };
 
   return (
@@ -31,7 +31,7 @@ const Header = () => {
           <>
             <span className="main-nav-item">
               <i className="fa fa-user-circle"></i>
-              {userProfile?.firstName} {/* Affiche uniquement le prénom */}
+              {userProfile?.username} {/* Display the username here */}
             </span>
             <button className="main-nav-item sign-out-button" onClick={handleSignOut}>
               <i className="fa-solid fa-right-from-bracket"></i>
@@ -50,4 +50,3 @@ const Header = () => {
 };
 
 export default Header;
-
