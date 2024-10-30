@@ -18,6 +18,9 @@
   text-decoration: none;
   margin-right: 1rem; /* Augmentation de l'espace entre les éléments */
 }
+.main-nav-item i {
+  margin-right: 0.5rem; /* Augmentation de l'espace entre l'icon et le texte */
+}
 
 .main-nav-item:last-child {
   margin-right: 0; /* Supprime la marge du dernier élément */
