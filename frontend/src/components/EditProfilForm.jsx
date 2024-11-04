@@ -1,37 +1,48 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import '../styles/editProfile.css';
 import { useDispatch } from 'react-redux';
-import { setUserProfile } from '../redux/userSlice'; // Adjust the import path if necessary
+import { updateUserProfileApi } from '../redux/userApi';
+import { setUserProfile } from '../redux/userSlice';
+import '../styles/editProfile.css';
 
 const EditProfileForm = ({ userProfile, onCancel }) => {
-  const dispatch = useDispatch(); // Initialize dispatch
+  const dispatch = useDispatch();
 
-  // State for form inputs
-  const [username, setUsername] = useState(userProfile.username || '');
+  const [userName, setUserName] = useState(userProfile.userName || '');
   const [firstName, setFirstName] = useState(userProfile.firstName || '');
   const [lastName, setLastName] = useState(userProfile.lastName || '');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    // Dispatch the setUserProfile action with updated data
-    dispatch(setUserProfile({ username, firstName, lastName }));
+    setLoading(true);
+    setError('');
 
-    console.log({ username, firstName, lastName });
+    try {
+      const token = localStorage.getItem('token');
+      const updatedProfile = await updateUserProfileApi(token, { userName, firstName, lastName });
+      dispatch(setUserProfile(updatedProfile));
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="edit-profile-form">
       <h2>Edit User Info</h2>
+      {loading && <p>Loading...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className='form-group'>
-          <label htmlFor="username">User Name:</label>
+          <label htmlFor="userName">User Name:</label>
           <input
             type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="userName"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
             required
           />
         </div>

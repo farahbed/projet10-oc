@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { signOutUser } from '../../redux/userSlice'; // Corrigez l'importation ici
+import { signOutUser } from '../../redux/userSlice';
 import './Header.css';
 
 const Header = () => {
@@ -31,7 +31,7 @@ const Header = () => {
           <>
             <span className="main-nav-item">
               <i className="fa fa-user-circle"></i>
-              {userProfile?.username} {/* Display the username here */}
+              {userProfile?.userName} {/* Assurez-vous que c'est userName et non username */}
             </span>
             <button className="main-nav-item sign-out-button" onClick={handleSignOut}>
               <i className="fa-solid fa-right-from-bracket"></i>

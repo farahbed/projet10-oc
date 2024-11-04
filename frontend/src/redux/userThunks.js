@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { setToken, setUserProfile } from './userSlice';
 import { loginUserApi, fetchUserProfileApi, updateUserProfileApi } from './userApi';
 
+
 export const loginUser = createAsyncThunk(
   'user/loginUser',
   async ({ email, password }, { dispatch, rejectWithValue }) => {
