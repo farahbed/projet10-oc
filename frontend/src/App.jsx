@@ -6,7 +6,7 @@ import Header from './components/header/Header';
 import Home from './pages/Home';
 import Login from './pages/login';
 import Profile from './pages/Profile';
-import Transaction from './pages/Transaction';
+
 
 
 function App() {
@@ -19,7 +19,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/transaction" element={<Transaction />} />
         </Routes>
       </main>
       <Footer />
